@@ -1,6 +1,6 @@
 function CreateStatesArray()
 {
-    return [new Intro(17), new LayDown(0), new Mountain(0)];
+    return [new Intro(0), new LayDown(0), new Mountain(0)];
 }
 
 class State
