@@ -44,7 +44,7 @@ class Intro
                 Print.AsDialogue(" U are at a traffic light and you need to go left");
                 break;
 
-            case 5: //test1
+            case 5:
                 if(Navigation.IsLeft(msg))
                 {
                     Print.AsDialogue("U go left and you arrive at your home.");
@@ -82,7 +82,7 @@ class Intro
                 Print.AsDialogue("U found yourself stuck in a room with a door. You want to go outside but the door is blocked by a box.");
                 break;
 
-            case 12://test2
+            case 12:
                 if (Interact.Move(msg, "box"))
                 {
                     Print.AsDialogue("You moved the box away from the door. U can now open the door");
@@ -118,7 +118,7 @@ class Intro
                 }
                 break;
 
-            case 13://test3
+            case 13:
                 
                 if(Interact.Open(msg, "door"))
                 {
