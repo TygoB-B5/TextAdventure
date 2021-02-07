@@ -14,7 +14,13 @@ class InputHandle
         if(m[0] === "i" || m[0] === "inv" || m[0] === "inventory")
         {
             player.inv.PrintInv();
+            return true;
         }
+
+        if(m[0] === "")
+            return true;
+
+        return false;
     }
 
     CheckForInvalidInput(msg)
@@ -24,11 +30,11 @@ class InputHandle
         if(m[0] === "use" && m[2] === undefined)
         {
             Print.AsInfo("Usage: " + m[0] + " [inventory Item] on [object]");
-            return;
+            return true;
         }
 
         if(m[1] !== undefined)
-            return;
+            return false;
 
         if(m[0] === "move" ||
         m[0] === "open" ||
@@ -38,16 +44,21 @@ class InputHandle
         )
         {
             Print.AsInfo("Usage: " + m + " [object]");
-            return;
+            return true;
         }
+
+        return false;
     }
 
     PushInput(msg)
     {
-        if(this.state.states[this.state.stateIndex].Continue(msg) != 0)
+        if(this.state.states[this.state.stateIndex].Continue(msg) == 0)
         {
-            this.CheckForGlobalInput(msg);
-            this.CheckForInvalidInput(msg);
+            if(!this.CheckForGlobalInput(msg))
+            {
+                if(!this.CheckForInvalidInput(msg))
+                    Print.AsInfo("Try doing something else.");
+            }
         }
     }
 }

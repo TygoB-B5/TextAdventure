@@ -107,9 +107,13 @@ class Intro
                     Print.AsDialogue("You open the box, there is nothing inside.");
                     return 1;
                 }
+                else if(Interact.Open(msg, "door"))
+                {
+                    Print.AsDialogue("There is a box in front of it.");
+                    return 1;
+                }
                 else
                 {
-                    Print.AsInfo("Try doing something else.");
                     return 0;
                 }
                 break;
@@ -142,7 +146,6 @@ class Intro
                 }
                 else
                 {
-                    Print.AsInfo("Try doing something else.");
                     return 0;
                 }
                 break;
@@ -169,14 +172,11 @@ class Intro
             case 18:
                 Print.AsParagraph("Let's practice these commands, try to open the door (use one of the inventory commands to open inventory)");
                 Print.AsDialogue("U found yourself locked inside a cage, try to find your way out through the door.");
+                player.inv.AddItem(new Item("key", 1));
                 break;
 
             case 19:
-                if(msg === "i" || msg === "inv" || msg === "inventory")
-                {
-                    player.inv.AddItem(new Item("key", 1));
-                }
-                else
+                if(msg !== "i" && msg !== "inv" && msg !== "inventory")
                 {
                     Print.AsDialogue("I should look if I have anything in my inventory that could help.");
                     return 0;
@@ -206,7 +206,6 @@ class Intro
                 }
                 else
                 {
-                    Print.AsInfo("Try doing something else.");
                     return 0;
                 }
                 break;
@@ -218,7 +217,6 @@ class Intro
                 }
                 else
                 {
-                    Print.AsInfo("Try doing something else.");
                     return 0;
                 }
                 break;
