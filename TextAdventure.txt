@@ -1,0 +1,241 @@
+Text-Based Adventure game
+Made in Javascript, html & css
+
+h1= Chapter
+P= paragraph
+D= dialogue
+I= input
+Inf= info
+<>= Go to markings
+()= Has item markings
+[]= special markings
+N= has no purpose
+
+--Transcript--
+
+h1>Intro //when input is incorrect type "P> Not the right input"
+    P>
+    Welcome to this Text-Based adventure game. (Enter to continue)
+
+    P>
+    Before we start I want to give a quick tutorial about how to play the game.
+
+h1>Enter
+    P>
+    To continue the game press enter, this should also be done when inputting commands in to the input bar.
+
+h1>Commands (Moving) 
+    P>
+    There are many commands that exist in this adventure, take for example movement commands as shown here.
+    move forward, forward, f.
+    move back, back, b.
+    move left, left, l.
+    move right, right, r.
+
+    P>
+    These commands can be used to move around in the game, let's try one of the commands.
+
+    D>
+    U are at a traffic light and you need to go left
+
+    I>left
+
+    D>
+    U go left and you arrive at your home.
+
+    P>
+    Good, now let's move on.
+
+h1>Commands (Interaciton)
+    P>
+    U can interact with your enviroment in many diffrent ways.
+
+    P>
+    Take for example climb, play, look, etc.
+
+    P>
+    These commands must always be followed by the object you are trying to interact with.
+
+    P>
+    For example "climb tree" or "play guitar".
+
+    P>
+    Here, try to find the right things to do in this situation.
+
+    D>
+    U found yourself stuck in a room with a door. You want to go outside but the door is blocked by a box
+
+    I>move box
+
+    D>
+    You moved the box away from the door.
+
+    I>open door
+
+    D>
+    You open the door and walk through seeing the daylight again.
+
+    P>
+    Perfect, you are great at this!
+
+h1>Commands (Inventory)
+    P>
+    U also have an Inventory that is useful for storing items u pick up along the way.
+
+    P>
+    Acces your inventory through one of these commands.
+    inventory, inv, i
+
+    P>
+    To use inventory items use the keywords.
+    use "item" on "object"
+
+    P>
+    Let's practice these commands, try to open the door (use one of the inventory commands to open inventory)
+
+    D>
+    U found yourself locked inside a cage.
+
+    I>
+    inventory
+
+    Inf>
+    key x1
+
+    I>
+    use key on door
+
+    D>
+    u use the key on the door to unlock it
+
+    I>
+    open door
+
+    D>
+    u open the door and escape the cage
+
+h1>Let's start
+    P>
+    That was all of the tutorial, now let's begin your adventure!
+
+h1> Mountain
+{
+    D>
+    U find yourself stranded on a big mountain laying in the grass.
+    U should probably try to stand up and "look around".
+
+    Laying down
+    {
+        I> look around
+        {
+            D>
+            You see the blue cloudy sky tall grass around you moving in the wind.
+        }
+
+        I> stand up
+        {
+            D>
+            You stand up and almost fall due to the strength of the wind.
+            <go to Explore the mountain L.141>
+        }
+    }
+
+    Explore the mountain
+    {
+        I> lay down
+        {
+            D>
+            You lay down again
+            <revert to Laying Down L.127>
+        }
+
+        [Navigation on mountain 3x3]
+
+        1.1>
+        {
+            D>
+            U find a dead tree, it looks like there are some ants walking on it.
+        }
+
+        1.2>
+        {
+            D>
+            U stand on the edge of the cliff, thats a deep fall...
+        }
+
+        1.3>
+        {
+            D>
+            There seems to only be some tall grass here.
+        }
+
+        2.1>
+        {
+            D>
+            U find a small cabin, what could be inside?
+
+            I>open door 
+            {
+                (no key)
+                D>
+                The door seems to be locked, I wonder if I can find the key.
+
+                (key)
+                D>
+                U open the door and get comforted by some warm candle light.
+                <go to Cabin L.238>
+            }
+        }
+
+        2.2>
+        {
+            D>
+            U are back at the tall grass, your body print is still in it.
+        }
+
+        2.3>
+        {
+            D>
+            U see a wild waterfall, cool!
+        }
+
+        3.1>
+        {
+            D>
+            The wind is unbearable here, I better head back quickly.
+        }
+
+        3.2>
+        {
+            D>
+            U spot some rocks. Small ones, big ones, in a bunch of diffrent shapes and sizes.
+
+            I> pick up rock
+            {
+                Inf> A small rock has been added to your inventory.
+            }
+        }
+
+        3.3>
+        {
+            D>
+            U stumble upon some shorter grass and a small box lies in front of you.
+
+            I> open box
+            {
+                D>
+                U open the box to find a golden key inside.
+
+                    I> pick up key
+                    {
+                    Inf> Key has been added to your inventory
+                    }
+            }
+        }
+    }
+}
+
+h1> Cabin
+{
+//wip
+}

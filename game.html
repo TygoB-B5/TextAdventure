@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html style="height:100vh;">
+
+<head>
+    <title>Adventure Game</title>
+    <meta charset="utf-8">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      
+    <script type="text/javascript" src="StaticClasses.js"></script>
+    <script type="text/javascript" src="Inventory.js"></script>
+    <script type="text/javascript" src="Printer.js"></script>
+    <script type="text/javascript" src="Background.js"></script>
+    <script type="text/javascript" src="Input.js"></script>
+    <script type="text/javascript" src="Player.js"></script>
+</head>
+
+<body id="body" style="background-repeat: no-repeat; background-size: cover;">
+
+    <input type="text" placeholder="" id="input">
+    <button type="button" onclick="GetInput();">Get Value</button>
+
+
+    <p id="text"></p>
+</body>
+</html>
+
+<script>
+    class LayDown
+    {
+        constructor(dIndex)
+        {
+        }
+    }
+
+    class Mountain
+    {
+        constructor(dIndex)
+        {
+        }
+    }   
+
+    const player = new Player();
+
+    player.inv.AddItem(new Item("Key", 10));
+    player.inv.AddItem(new Item("Money", 10));
+    player.inv.AddItem(new Item("TwitchDollars", 10));
+    player.inv.AddItem(new Item("Tax", 10));
+
+    player.bg.SetBackground(1);
+    player.inv.PrintInv();
+
+    player.prnt.PrintAsInfo("Shake your tail like this funny cat doe");
+
+    player.prnt.PrintAsInfo("S");
+
+</script>
