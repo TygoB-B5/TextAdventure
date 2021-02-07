@@ -7,6 +7,13 @@ class Intro
     
     Continue(msg)
     {
+        if(msg === "skip")
+        {
+            this.FinishState();
+            player.input.PushInput("");
+            return 1;
+        }
+
         switch(this.dIndex)
         {
             case 0:
@@ -16,7 +23,7 @@ class Intro
                 break;
 
             case 1:
-                Print.AsParagraph("Before we start I want to give a quick tutorial about how to play the game.");
+                Print.AsParagraph("Before we start I want to give a quick tutorial about how to play the game. (type skip to skip tutorial)");
                 break;
 
             case 2:
@@ -80,10 +87,25 @@ class Intro
                 {
                     Print.AsDialogue("You moved the box away from the door. U can now open the door");
                 }
+                else if (Interact.Move(msg, "door"))
+                {
+                    Print.AsDialogue("U cant move the door, its out of your reach.");
+                    return 1;
+                }
                 else if(Interact.Break(msg, "box"))
                 {
                     Print.AsDialogue("This will only block the door more.")
-                    return 0;
+                    return 1;
+                }
+                else if(Interact.Break(msg, "door"))
+                {
+                    Print.AsDialogue("The door is way to strong.")
+                    return 1;
+                }
+                else if(Interact.Open(msg, "box"))
+                {
+                    Print.AsDialogue("You open the box, there is nothing inside.");
+                    return 1;
                 }
                 else
                 {
@@ -97,6 +119,26 @@ class Intro
                 if(Interact.Open(msg, "door"))
                 {
                     Print.AsDialogue("You open the door and walk through seeing the daylight again.");
+                }
+                else if(Interact.Open(msg, "box"))
+                {
+                    Print.AsDialogue("You open the box, there is nothing inside.");
+                    return 1;
+                }
+                else if(Interact.Break(msg, "door"))
+                {
+                    Print.AsDialogue("The door is still too strong.");
+                    return 1;
+                }
+                else if(Interact.Break(msg, "box"))
+                {
+                    Print.AsDialogue("You break the box... good job");
+                    return 1;
+                }
+                else if(Interact.Move(msg, "door"))
+                {
+                    Print.AsDialogue("You can't move the door. Its too heavy.");
+                    return 1;
                 }
                 else
                 {
@@ -126,14 +168,13 @@ class Intro
 
             case 18:
                 Print.AsParagraph("Let's practice these commands, try to open the door (use one of the inventory commands to open inventory)");
-                Print.AsDialogue("U found yourself locked inside a cage, try to find your way out.");
+                Print.AsDialogue("U found yourself locked inside a cage, try to find your way out through the door.");
                 break;
 
             case 19:
                 if(msg === "i" || msg === "inv" || msg === "inventory")
                 {
                     player.inv.AddItem(new Item("key", 1));
-                    player.inv.PrintInv();
                 }
                 else
                 {
@@ -151,7 +192,17 @@ class Intro
                 else if(Interact.Open(msg, "door"))
                 {
                     Print.AsDialogue("The door seems to be locked.");
-                    return 0;
+                    return 1;
+                }
+                else if(Interact.Break(msg, "cage"))
+                {
+                    Print.AsInfo("Try to target specific objects.");
+                    return 1;
+                }
+                else if(Interact.Open(msg, "cage"))
+                {
+                    Print.AsInfo("Try to target specific objects.");
+                    return 1;
                 }
                 else
                 {
@@ -167,15 +218,14 @@ class Intro
                 }
                 else
                 {
-                    Print.AsParagraph("Try doing something else.");
+                    Print.AsInfo("Try doing something else.");
                     return 0;
                 }
                 break;
 
             case 22:
                 Print.AsParagraph("That was all of the tutorial, now let's begin your adventure!");
-                Print.Space();
-                player.input.state.SetActiveState(1);
+                this.FinishState();
                 break;
 
             default:
@@ -183,6 +233,13 @@ class Intro
             break;
         }
         this.dIndex++;
+        return 1;
+    }
+
+    FinishState()
+    {
+        Print.Space();
+        player.input.state.SetActiveState(1);
     }
 }
 
@@ -196,7 +253,7 @@ class LayDown
     Continue(msg)
     {
         player.bg.SetBackground(1);
-        alert("laydown " + msg);
+        Print.AsTitle("Work in progress");
     }
 }
 
@@ -205,5 +262,11 @@ class Mountain
     constructor(dIndex)
     {
         this.dIndex = dIndex;
+    }
+
+    Continue(msg)
+    {
+        player.bg.SetBackground(2);
+        Print.AsTitle("Work in progress");
     }
 }

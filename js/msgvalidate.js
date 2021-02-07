@@ -35,6 +35,16 @@ class Navigation
 
 class Interact
 {
+    static Break(msg, obj)
+    {
+        var wordArr = msg.split(" ");
+
+        if(wordArr[0] === "break" && wordArr[1] === obj)
+            return true;
+
+        return false;
+    }
+
     static Open(msg, obj)
     {
         var wordArr = msg.split(" ");
