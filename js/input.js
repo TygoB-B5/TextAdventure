@@ -7,19 +7,13 @@ class InputHandle
 
     CheckForGlobalInput(msg)
     {
+        //inv keyword
         var m = msg.split(" ");
-        if(m[1] !== undefined)
-        return;
-
-        if(m[0] === "i" || m[0] === "inv" || m[0] === "inventory")
-        {
-            player.inv.PrintInv();
-            return true;
-        }
-
-        if(m[0] === "")
-            return true;
-
+            if (m[0] === "i" || m[0] === "inv" || m[0] === "inventory")
+            {
+                player.inv.PrintInv();
+                return true;
+            }
         return false;
     }
 
@@ -27,6 +21,7 @@ class InputHandle
     {
         var m = msg.split(" ");
 
+        //use keyword
         if(m[0] === "use" && m[2] === undefined)
         {
             Print.AsInfo("Usage: " + m[0] + " [inventory Item] on [object]");
@@ -36,6 +31,7 @@ class InputHandle
         if(m[1] !== undefined)
             return false;
 
+        //the rest
         if(m[0] === "move" ||
         m[0] === "open" ||
         m[0] === "break"||
@@ -47,18 +43,22 @@ class InputHandle
             return true;
         }
 
+        //empty
+        if(m[0] === "")
+            return true;
+
         return false;
     }
 
     PushInput(msg)
     {
+        if(this.CheckForGlobalInput(msg))
+            return;
+
         if(this.state.states[this.state.stateIndex].Continue(msg) == 0)
         {
-            if(!this.CheckForGlobalInput(msg))
-            {
                 if(!this.CheckForInvalidInput(msg))
                     Print.AsInfo("Try doing something else.");
-            }
         }
     }
 }

@@ -52,7 +52,7 @@ class Intro
                 else
                 {
                     Print.AsInfo("Follow the input as specified");
-                    return 0;
+                    return 1;
                 }
                 break;
 
@@ -172,22 +172,24 @@ class Intro
             case 18:
                 Print.AsParagraph("Let's practice these commands, try to open the door (use one of the inventory commands to open inventory)");
                 Print.AsDialogue("U found yourself locked inside a cage, try to find your way out through the door.");
+
                 player.inv.AddItem(new Item("key", 1));
                 break;
 
             case 19:
                 if(msg !== "i" && msg !== "inv" && msg !== "inventory")
                 {
+                    this.dIndex++;
                     Print.AsDialogue("I should look if I have anything in my inventory that could help.");
                     return 0;
                 }
                 break;
 
             case 20:
-                if(Interact.Use(msg, "key", "door"))
+                if(Interact.Use(msg, "key", "door") && player.inv.HasItem(new Item("key", 1)))
                 {
+                    player.inv.RemoveItem(new Item("key", 1));
                     Print.AsDialogue("You use the key on the door to unlock it.");
-                    player.inv.RemoveItem(new Item("Key", 1));
                 }
                 else if(Interact.Open(msg, "door"))
                 {
@@ -214,6 +216,11 @@ class Intro
                 if(Interact.Open(msg, "door"))
                 {
                     Print.AsDialogue("You open the door and escape the cage");
+                }
+                else if(Interact.Use(msg, "key", "door"))
+                {
+                    Print.AsDialogue("The door is already unlocked and the key broke.");
+                    return 1;
                 }
                 else
                 {

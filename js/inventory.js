@@ -21,9 +21,10 @@ class Inventory
 
     PrintInv()
     {
+        Print.AsInfo("Inventory:");
         for(var i = 0; i < this.items.length; i++)
         {
-            var msg = this.items[i].name + ' ' + this.items[i].amount;
+            var msg = "[" + this.items[i].name + "] x" + this.items[i].amount;
             Print.AsInfo(msg);
         }
      }
@@ -51,13 +52,7 @@ class Inventory
 
                 if(this.items[i].amount <= 0)
                 {
-                    for(var i = 0; i < this.item.length; i++)
-                    {
-                        if(i === item)
-                        {
-                            this.items.splice(i, 1);
-                        }
-                    }
+                    this.items.splice(i, 1);
                 }
                 return;
             }
@@ -70,6 +65,7 @@ class Inventory
         {
             if(this.items[i].name === item.name)
             {
+
                 if(this.items[i].amount >= item.amount)
                 {
                     return true;
