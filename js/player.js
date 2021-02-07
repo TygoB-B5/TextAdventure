@@ -10,7 +10,6 @@ class Player
         this.input = new InputHandle();
         this.inv = new Inventory();
         this.bg = new Background();
-        this.prnt = new Printer();
 
         this.states = CreateStatesArray();
         this.currentState = this.states[0];

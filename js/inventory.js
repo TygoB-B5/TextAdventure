@@ -1,4 +1,3 @@
-
 class Item
     {
         constructor(name, amount)
@@ -25,7 +24,7 @@ class Inventory
         for(var i = 0; i < this.items.length; i++)
         {
             var msg = this.items[i].name + ' ' + this.items[i].amount;
-            player.prnt.PrintAsInfo(msg);
+            Print.AsInfo(msg);
         }
      }
 
@@ -52,10 +51,31 @@ class Inventory
 
                 if(this.items[i].amount <= 0)
                 {
-                    this.items = RemoveFromArray(item, this.items[i]);
+                    for(var i = 0; i < this.item.length; i++)
+                    {
+                        if(i === item)
+                        {
+                            this.items.splice(i, 1);
+                        }
+                    }
                 }
                 return;
             }
         }
+    }
+
+    HasItem(item)
+    {
+        for(var i = 0; i < this.items.length; i++)
+        {
+            if(this.items[i].name === item.name)
+            {
+                if(this.items[i].amount >= item.amount)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
