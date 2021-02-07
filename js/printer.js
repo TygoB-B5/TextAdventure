@@ -2,21 +2,26 @@
 {
     static AsTitle(msg)
     {
-        $('#text').append( "<h1 style='margin-top: 10px;'>" + msg + "</h1>" );
+        $('#text').append( "<p id='title'>" + msg + "</p>");
     }
     
     static AsParagraph(msg)
     {
-        $('#text').append( "<p style='margin-top: 30px;'>" + msg + "</p>" );
+        $('#text').append( "<p id='paragraph'>" + msg + "</p>" );
     }
 
     static AsDialogue(msg)
     {
-        $('#text').append( "<p style='font-style: italic; margin-top: 30px;'>" + msg + "</p>" );
+        $('#text').append( "<p id='dialogue'>" + msg + "</p>" );
     }
 
     static AsInfo(msg)
     {
-        $('#text').append( "<p style='font-weight: bold; margin-top: 5px;'>" + msg + "</p>" );
+        $('#text').append( "<p id='info'>" + msg + "</p>" );
+    }
+
+    static Space()
+    {
+        $('#text').append( "<div style='height: 200px'></div>" );
     }
 }

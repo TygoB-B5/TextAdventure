@@ -1,6 +1,6 @@
 function CreateStatesArray()
 {
-    return [new Intro(0), new Tutorial(0), new LayDown(0), new Mountain(0)];
+    return [new Intro(0), new LayDown(0), new Mountain(0)];
 }
 
 class State
@@ -10,5 +10,10 @@ class State
     this.stateIndex = 0;
     this.states = CreateStatesArray();
     this.currentState = this.states[this.stateIndex];
+    }
+
+    SetActiveState(index)
+    {
+        this.stateIndex = index;
     }
 }
