@@ -13,32 +13,23 @@
     <script type="text/javascript" src="js/input.js"></script>
     <script type="text/javascript" src="js/msgvalidate.js"></script>
     <script type="text/javascript" src="js/states.js"></script>
+    <script type="text/javascript" src="js/state.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
 </head>
 
-<body id="body" style="background-repeat: no-repeat; background-size: cover;">
+<body id="body" style="background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
 
-    <input type="text" placeholder="" id="input">
-    <button type="button" onclick="GetInput();">Get Value</button>
-    <p id="text"></p>
+    <div id="text" style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;"></div>
+
+    <p style="margin-left: auto; margin-right: auto; width: 200px; display: block;">&#62; <input style="background-color: rgba(0, 0, 0, 0.005); border: none; box-shadow: none; outline:none;" type="text" placeholder="" id="input"></p>
+    <div id="spacer" style="height: 200px;"></div>
 </body>
 
 <script>
     
-
 const player = new Player();
+
+    player.Start();
     
-    player.inv.AddItem(new Item("Key", 10));
-    player.inv.AddItem(new Item("Money", 10));
-    player.inv.AddItem(new Item("TwitchDollars", 10));
-    player.inv.AddItem(new Item("Tax", 10));
-    player.bg.SetBackground(0);
-    
-    player.inv.PrintInv();
-    
-    Print.AsInfo("hi");
-    
-    Print.AsInfo(player.inv.HasItem(new Item("Key", 11)));
-    Print.AsInfo(Navigation.IsLeft("l"));
 </script>
 </html>

@@ -35,6 +35,26 @@ class Navigation
 
 class Interact
 {
+    static Open(msg, obj)
+    {
+        var wordArr = msg.split(" ");
+
+        if(wordArr[0] === "open" && wordArr[1] === obj)
+            return true;
+
+        return false;
+    }
+
+    static Move(msg, obj)
+    {
+        var wordArr = msg.split(" ");
+
+        if(wordArr[0] === "move" && wordArr[1] === obj)
+            return true;
+
+        return false;
+    }
+
     static Use(msg, invObject, interactible)
     {
         var wordArr = msg.split(" ");

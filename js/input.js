@@ -1,15 +1,14 @@
 class InputHandle
 {
+    constructor()
+    {
+        this.state = new State();
+    }
+
     PushInput(msg)
     {
-        //do something
+        this.state.states[this.state.stateIndex].Continue(msg);
     }
-}
-
-function GetInput()
-{
-    player.input.PushInput($('input').val());
-    $('input').val('');
 }
 
 $(function ($)
@@ -17,7 +16,11 @@ $(function ($)
     $('input').on('keyup', function ()
     {
         if (event.keyCode == 13) {
-            GetInput();
+            player.input.PushInput($('input').val());
+            $('input').val('');
+
+            //scrolls down when input
+            $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
         }
     });
 });
