@@ -11,37 +11,23 @@
     <script type="text/javascript" src="js/printer.js"></script>
     <script type="text/javascript" src="js/background.js"></script>
     <script type="text/javascript" src="js/input.js"></script>
-    <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/msgvalidate.js"></script>
+    <script type="text/javascript" src="js/states.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
 </head>
 
 <body id="body" style="background-repeat: no-repeat; background-size: cover;">
 
     <input type="text" placeholder="" id="input">
     <button type="button" onclick="GetInput();">Get Value</button>
-
-
     <p id="text"></p>
 </body>
-</html>
 
 <script>
-    class LayDown
-    {
-        constructor(dIndex)
-        {
-        }
-    }
+    
 
-    class Mountain
-    {
-        constructor(dIndex)
-        {
-        }
-    }   
-
-    const player = new Player();
-
+const player = new Player();
+    
     player.inv.AddItem(new Item("Key", 10));
     player.inv.AddItem(new Item("Money", 10));
     player.inv.AddItem(new Item("TwitchDollars", 10));
@@ -49,12 +35,10 @@
     player.bg.SetBackground(0);
     
     player.inv.PrintInv();
-
+    
     Print.AsInfo("hi");
-
+    
     Print.AsInfo(player.inv.HasItem(new Item("Key", 11)));
     Print.AsInfo(Navigation.IsLeft("l"));
-
-
-
 </script>
+</html>

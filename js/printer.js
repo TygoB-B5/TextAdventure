@@ -1,4 +1,4 @@
-class Print
+    class Print
 {
     static AsChapter(msg)
     {
