@@ -32,7 +32,7 @@ class Intro
 
             case 3:
                 Print.AsTitle("Commands (moving)");
-                Print.AsParagraph("There are many commands that exist in this adventure, take for example the navigation commands as shown here");
+                Print.AsParagraph("There are many commands that exist in this adventure, take for example the navigation commands as shown here.");
                 Print.AsInfo("move forward, forward, f.");
                 Print.AsInfo("move back, back, b.");
                 Print.AsInfo("move left, left, l.");
@@ -51,8 +51,7 @@ class Intro
                 }
                 else
                 {
-                    Print.AsInfo("Follow the input as specified");
-                    return 1;
+                    return 0;
                 }
                 break;
 

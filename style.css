@@ -1,10 +1,60 @@
+/*#region FadeAnimation*/
+
+body
+{
+    -webkit-animation: fadein 5s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 5s; /* Firefox < 16 */
+        -ms-animation: fadein 5s; /* Internet Explorer */
+         -o-animation: fadein 5s; /* Opera < 12.1 */
+            animation: fadein 5s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/*#endregion FadeAnimation*/
+
+html::-webkit-scrollbar { width: 0 !important }
+html { overflow: -moz-scrollbars-none; }
+html { -ms-overflow-style: none; }
+
+
 html
 {
-    height:100vh;
+    height:100%;
+    width: 100%;
 }
 
 #body
 {
+    margin: 0;
+    padding: 0;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -12,7 +62,9 @@ html
 
 #text
 {
-    text-align: center;
+    margin-top: 30%;
+    margin-left: 20vw;
+    margin-right: 20vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -20,39 +72,73 @@ html
 {
     margin-left: auto;
     margin-right: auto;
-    width: 200px;
+    margin-top: 75px;
     display: block;
+    width: 25vh;
+    font-size: 15px;
 }
 
 #inputfield input
 {
+    width: 50%;
+    font-size: 15px;
     background-color: rgba(0, 0, 0, 0.005);
     border: none;
     box-shadow: none;
     outline:none;
 }
 
+#spacer
+{
+  height: 300px;
+  width: 100%;
+}
+
+@media (max-aspect-ratio: 6/7)
+{
+  #spacer
+  {
+    height: 700px;
+  }
+
+  #inputfield input
+  {
+      font-size: 30px;
+  }
+
+  #inputfield
+  {
+    font-size: 30px;
+  }
+}
+
 /* TEXT OUTPUT STYLING */
 #title
 {
+    text-decoration: underline;
+    margin-bottom: 40px;
     font-size: 40px;
-    color: gray;
+    color: black;
 }
 
 #paragraph
 {
-    font-size: 20px;
-    color: green;
+    margin-bottom: 10px;
+    font-size: 23px;
+    color: rgb(12, 111, 122);
 }
 
 #dialogue
 {
-    font-size: 20px;
+    margin-bottom: 40px;
+    font-size: 22px;
     font-style: italic;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #info
 {
+    margin-bottom: 5px;
     font-size: 15px;
     font-weight: bold;
     color: blue;

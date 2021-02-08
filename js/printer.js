@@ -12,7 +12,7 @@
 
     static AsDialogue(msg)
     {
-        $('#text').append( "<p id='dialogue'>" + msg + "</p>" );
+        $('#text').append( "<p id='dialogue'>&#62 " + msg + "</p>" );
     }
 
     static AsInfo(msg)
