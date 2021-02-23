@@ -19,7 +19,7 @@ class Intro
             case 0:
                 player.bg.SetBackground(0);
                 Print.AsTitle("Intro");
-                Print.AsParagraph("Welcome to this Text-Based adventure game. (Enter to continue)");
+                Print.AsParagraph("Welcome to this Text-Based adventure game. (Click on textbox & Click enter)");
                 break;
 
             case 1:

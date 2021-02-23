@@ -7,7 +7,7 @@ class InputHandle
 
     CheckForGlobalInput(msg)
     {
-        //inv keyword
+        //if inv keyword
         var m = msg.split(" ");
             if (m[0] === "i" || m[0] === "inv" || m[0] === "inventory")
             {
@@ -31,7 +31,7 @@ class InputHandle
         if(m[1] !== undefined)
             return false;
 
-        //the rest
+        //use misc
         if(m[0] === "move" ||
         m[0] === "open" ||
         m[0] === "break"||
