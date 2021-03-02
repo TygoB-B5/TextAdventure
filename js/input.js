@@ -5,15 +5,14 @@ class InputHandle
         this.state = new State();
     }
 
-    CheckForGlobalInput(msg)
-    {
+    CheckForGlobalInput(msg) {
         //if inv keyword
         var m = msg.split(" ");
-            if (m[0] === "i" || m[0] === "inv" || m[0] === "inventory")
-            {
-                player.inv.PrintInv();
-                return true;
-            }
+        if (m[0] === "i" || m[0] === "inv" || m[0] === "inventory") {
+            player.inv.PrintInv();
+            return true;
+        }
+
         return false;
     }
 
@@ -28,6 +27,19 @@ class InputHandle
             return true;
         }
 
+        if (Interact.Sit(msg))
+        {
+            Print.AsInfo("Unable to sit right now");
+            return true;
+        }
+
+        if (Interact.Stand(msg))
+        {
+            Print.AsInfo("Unable to stand right now");
+            return true;
+        }
+
+        /*SINGLE WORD*/
         if(m[1] !== undefined)
             return false;
 
@@ -55,7 +67,7 @@ class InputHandle
         if(this.CheckForGlobalInput(msg))
             return;
 
-        if(this.state.states[this.state.stateIndex].Continue(msg) == 0)
+        if(this.state.currentState.Continue(msg) == 0)
         {
                 if(!this.CheckForInvalidInput(msg))
                     Print.AsInfo("Try doing something else.");

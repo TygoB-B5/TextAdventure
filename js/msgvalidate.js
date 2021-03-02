@@ -35,6 +35,41 @@ class Navigation
 
 class Interact
 {
+    static Sit(msg)
+    {
+        if(msg == "sit")
+        {
+            return true;
+        }
+        else if(msg == "sit down")
+        {
+            return true;
+        }
+        return false;
+    }
+    static Stand(msg)
+    {
+        if(msg == "stand")
+        {
+            return true;
+        }
+        else if(msg == "stand up")
+        {
+            return true;
+        }
+        return false;
+    }
+
+    static Look(msg, obj)
+    {
+        var wordArr = msg.split(" ");
+
+        if(wordArr[0] === "look" && wordArr[1] === obj)
+            return true;
+
+        return false;
+    }
+
     static Break(msg, obj)
     {
         var wordArr = msg.split(" ");

@@ -7,6 +7,8 @@ class Intro
     
     Continue(msg)
     {
+        player.bg.SetBackground(0);
+
         if(msg === "skip")
         {
             this.FinishState();
@@ -17,7 +19,6 @@ class Intro
         switch(this.dIndex)
         {
             case 0:
-                player.bg.SetBackground(0);
                 Print.AsTitle("Intro");
                 Print.AsParagraph("Welcome to this Text-Based adventure game. (Click on textbox & Click enter)");
                 break;
@@ -242,8 +243,7 @@ class Intro
 
     FinishState()
     {
-        Print.Space();
-        player.input.state.SetActiveState(1);
+        player.input.state.SetActiveState(1, 0);
     }
 }
 
@@ -252,52 +252,50 @@ class LayDown
     constructor(dIndex)
     {
         this.dIndex = dIndex;
+        
     }
 
     Continue(msg)
     {
+        player.bg.SetBackground(1);
+
         switch(this.dIndex)
         {
             case 0:
+                Print.AsTitle("Where am i?");
+                Print.AsDialogue("You find yourself stranded on a big mountain laying in the grass.\nYou should probably try to stand up and look around.");
                 break;
 
             case 1:
-                break;
-
-            case 2:
-                break;
-
-            case 3:
-                break;
-
-            case 4:
-                break;
-
-            case 5:
-                break;
-
-            case 6:
-                break;
-
-            case 7:
-                break;
-
-            case 8:
-                break;
-
-            case 9:
-                break;
-
-            case 10:
-                break;
-
-            case 11:
-                break;
-
-            case 12:
-                break;
-
-            case 13:
+                if(Interact.Look(msg, "around"))
+                {
+                    Print.AsDialogue("You see the blue cloudy sky tall grass around you moving in the wind.")
+                    return 1;
+                }
+                else if(Interact.Look(msg, "up"))
+                {
+                    Print.AsDialogue("You see the gray cloudy sky");
+                    return 1;
+                }
+                else if(Interact.Look(msg, "left") || Interact.Look(msg, "left"))
+                {
+                    Print.AsDialogue("You see the grass moving around you");
+                    return 1;
+                }
+                else if(Interact.Look(msg, "down"))
+                {
+                    Print.AsDialogue("You see your feet with tall grass covering it");
+                    return 1;
+                }
+                else if(Interact.Stand(msg))
+                {
+                    Print.AsDialogue("You stand up and almost fall due to the strength of the wind.");
+                    this.FinishState();
+                }
+                else
+                {
+                    return 0;
+                }
                 break;
 
             default:
@@ -311,8 +309,7 @@ class LayDown
 
     FinishState()
     {
-        Print.Space();
-        player.input.state.SetActiveState(2);
+        player.input.state.SetActiveState(2, 0);
     }
 }
 
@@ -321,11 +318,47 @@ class Mountain
     constructor(dIndex)
     {
         this.dIndex = dIndex;
+        this.coord = new Cord2D(1, 1);
     }
 
     Continue(msg)
     {
         player.bg.SetBackground(2);
-        Print.AsTitle("Work in progress");
+
+        switch(this.dIndex)
+        {
+            case 0:
+                Print.AsDialogue("You found yourself standing on a tall mountain, u should try to explore a bit.");
+                break;
+
+            case 1:
+                if(Interact.Sit(msg) && this.coord == new Cord2D(1, 1))
+                {
+                    Print.AsDialogue("You lay back down in the grass");
+                    player.input.state.SetActiveState(1, 0);
+                }
+                else
+                {
+                    return 0;
+                }
+                break;
+
+            case 2:
+                alert("hi");
+                this.dIndex--;
+                break;
+
+            default:
+                alert("Error, dIndex out of range, " + this.dIndex);
+                break;
+        }
+        
+        this.dIndex++;
+        return 1;
+    }
+
+    FinishState()
+    {
+        player.input.state.SetActiveState(3, 0);
     }
 }

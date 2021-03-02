@@ -1,19 +1,20 @@
-function CreateStatesArray()
+function GetState(stateIndex, loadPointIndex)
 {
-    return [new Intro(0), new LayDown(0), new Mountain(0)];
+    var states = [new Intro(loadPointIndex), 
+        new LayDown(loadPointIndex), 
+        new Mountain(loadPointIndex)];
+    return states[stateIndex];
 }
 
 class State
 {
     constructor()
     {
-    this.stateIndex = 0;
-    this.states = CreateStatesArray();
-    this.currentState = this.states[this.stateIndex];
+    this.currentState = GetState(2, 0);
     }
 
-    SetActiveState(index)
+    SetActiveState(index, loadindex)
     {
-        this.stateIndex = index;
+        this.currentState = GetState(index, loadindex);
     }
 }
