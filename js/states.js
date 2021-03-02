@@ -308,6 +308,7 @@ class Mountain
     {
         this.dIndex = dIndex;
         this.coord = new Cord2D(2, 2);
+        this.doorIsLocked = true;
     }
 
     Continue(msg)
@@ -396,8 +397,38 @@ class Mountain
                     switch(this.coord.x)
                     {
                         case 1:
+
                             Print.AsDialogue("U find a small cabin, what could be inside?");
-                            break;
+
+                            if(Interact.Use(msg, "key", "cabin") || Interact.Use(msg, "key", "door"))
+                            {
+                                alert("hi");
+                                if(player.inv.HasItem(new Item("key", 1)))
+                                {
+                                    Print.AsDialogue("You unlock the cabin door");
+                                    this.doorIsLocked = false;
+                                }
+                                return 1;
+                            }
+                            else if(Interact.Open(msg, "cabin") || Interact.Open(msg, "door"))
+                            {
+                                if(this.doorIsLocked)
+                                {
+                                    Print.AsDialogue("The cabin door is locked");
+                                    return 1;
+                                }
+                                else
+                                {
+                                    Print.AsDialogue("You go through the door and enter the warm cabin.");
+                                    player.input.state.SetActiveState(3, 0);
+                                    return 1;
+                                }
+                            }
+                            else 
+                            {
+                                return 0;
+                            }
+
                         case 2:
                             Print.AsDialogue("U are back at the tall grass, your body print is still in it.");
                             break;
