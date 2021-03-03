@@ -209,11 +209,6 @@ h1> Mountain
         {
             D>
             U spot some rocks. Small ones, big ones, in a bunch of diffrent shapes and sizes.
-
-            I> pick up rock
-            {
-                Inf> A small rock has been added to your inventory.
-            }
         }
 
         3.3>

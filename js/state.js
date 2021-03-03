@@ -11,7 +11,7 @@ class State
 {
     constructor()
     {
-    this.currentState = GetState(2, 0);
+    this.currentState = GetState(0, 0);
     }
 
     SetActiveState(index, loadindex)

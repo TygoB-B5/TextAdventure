@@ -276,8 +276,7 @@ class Mountain {
     Continue(msg) {
         player.bg.SetBackground(2);
 
-        if(msg === "" && this.dIndex != 0)
-        {
+        if (msg === "" && this.dIndex != 0) {
             return 1;
         }
 
@@ -386,7 +385,11 @@ class Mountain {
                                             player.input.state.SetActiveState(3, 0);
                                         }
                                     }
-                                    else {
+                                    else if (Interact.Break(msg, "door") || Interact.Break(msg, "cabin")) {
+                                        Print.AsDialogue("You punch the door but it doesnt move, that hurt...");
+                                    } else if (Interact.Move(msg, "door") || Interact.Move(msg, "cabin")) {
+                                        Print.AsDialogue("You grab the door but it is shut and ummovable.");
+                                    } else {
                                         return 0;
                                     }
                             }
@@ -459,7 +462,7 @@ class Cabin {
         switch (this.dIndex) {
             case 0:
                 Print.AsTitle("WIP");
-               break;
+                break;
 
             case 1:
                 break;
