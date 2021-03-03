@@ -48,8 +48,8 @@ class InputHandle
         m[0] === "open" ||
         m[0] === "break"||
         m[0] === "look"||
-        m[0] === "climb"
-        )
+        m[0] === "climb" ||
+        m[0] === "pickup")
         {
             Print.AsInfo("Usage: " + m + " [object]");
             return true;

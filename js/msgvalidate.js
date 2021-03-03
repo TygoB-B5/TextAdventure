@@ -60,6 +60,19 @@ class Interact
         return false;
     }
 
+    static Pickup(msg, obj)
+    {
+        var wordArr = msg.split(" ");
+
+        if(wordArr[0] === "pickup" && wordArr[1] === obj)
+            return true;
+
+        if(wordArr[0] === "pick" && wordArr[1] === "up" && wordArr[2] === obj)
+            return true;
+
+        return false;
+    }
+
     static Look(msg, obj)
     {
         var wordArr = msg.split(" ");
