@@ -1,12 +1,9 @@
-class Background
-{
-    constructor()
-    {
+class Background {
+    constructor() {
         this.bg = ["whitebackground.png", "layingingrass.png", "mountain.png"];
     }
 
-    SetBackground(backgroundIndex)
-    {
+    SetBackground(backgroundIndex) {
         $('body').css('background-image', 'url(img/' + this.bg[backgroundIndex] + ')');
     }
 }

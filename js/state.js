@@ -1,21 +1,17 @@
-function GetState(stateIndex, loadPointIndex)
-{
-    var states = [new Intro(loadPointIndex), 
-        new LayDown(loadPointIndex), 
-        new Mountain(loadPointIndex),
-        new Cabin(loadPointIndex)];
+function GetState(stateIndex, loadPointIndex) {
+    var states = [new Intro(loadPointIndex),
+    new LayDown(loadPointIndex),
+    new Mountain(loadPointIndex),
+    new Cabin(loadPointIndex)];
     return states[stateIndex];
 }
 
-class State
-{
-    constructor()
-    {
-    this.currentState = GetState(0, 0);
+class State {
+    constructor() {
+        this.currentState = GetState(0, 0);
     }
 
-    SetActiveState(index, loadindex)
-    {
+    SetActiveState(index, loadindex) {
         this.currentState = GetState(index, loadindex);
     }
 }

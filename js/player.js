@@ -1,14 +1,11 @@
-class Player
-{
-    constructor() 
-    {
+class Player {
+    constructor() {
         this.input = new InputHandle();
         this.inv = new Inventory();
         this.bg = new Background();
     }
 
-    Start()
-    {
+    Start() {
         this.input.PushInput("");
     }
 }
