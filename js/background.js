@@ -1,6 +1,6 @@
 class Background {
     constructor() {
-        this.bg = ["whitebackground.png", "layingingrass.png", "mountain.png"];
+        this.bg = ["whitebackground.png", "layingingrass.png", "mountain.png", "cabin.png"];
     }
 
     SetBackground(backgroundIndex) {

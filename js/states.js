@@ -1,3 +1,28 @@
+class Template {
+    constructor(dIndex) {
+        this.dIndex = dIndex;
+    }
+
+    Continue(msg) {
+        player.bg.SetBackground(3);
+
+        switch (this.dIndex) {
+            case 0:
+                Print.AsTitle("WIP");
+                break;
+
+            case 1:
+                break;
+
+            default:
+                alert("Error, dIndex out of range, " + this.dIndex);
+                break;
+        }
+        this.dIndex++;
+        return 1;
+    }
+}
+
 class Intro {
     constructor(dIndex) {
         this.dIndex = dIndex;
@@ -14,7 +39,7 @@ class Intro {
 
         switch (this.dIndex) {
             case 0:
-                Print.AsTitle("Intro");
+                Print.AsTitle("Welcome");
                 Print.AsParagraph("Welcome to this Text-Based adventure game. (Click on textbox & Click enter)");
                 break;
 
@@ -434,14 +459,12 @@ class Mountain {
                                     Print.AsDialogue("U stumble upon some shorter grass and a small box lies in front of you.");
                                 }
                                 this.isOnBox = true;
-
                             }
                             break;
                     }
                 }
                 break;
             //#endregion
-
 
             default:
                 alert("Error, dIndex out of range, " + this.dIndex);
@@ -454,6 +477,7 @@ class Mountain {
 class Cabin {
     constructor(dIndex) {
         this.dIndex = dIndex;
+        this.hasSuit = false;
     }
 
     Continue(msg) {
@@ -461,10 +485,75 @@ class Cabin {
 
         switch (this.dIndex) {
             case 0:
-                Print.AsTitle("WIP");
+                Print.AsTitle("A small cabin.");
+                Print.AsDialogue("You look deeper in the cabin and feel the warmth from the fireplace that has fresh wood in it, strange?");
                 break;
 
             case 1:
+                if (Interact.GoTo(msg, "hatch")) {
+                    Print.AsDialogue("You look around and see a hatch, window and fireplace.");
+                } else
+                if (Interact.GoTo(msg, "window")) {
+                    Print.AsDialogue("You look around and see a hatch, window and fireplace.");
+                    this.dIndex = 3;
+                    return 1;
+                } else
+                if (Interact.GoTo(msg, "fireplace")) {
+                    if(this.hasSuit) {
+                        Print.AsDialogue("You approach the fire and don't feel the warmth at all.")
+                        this.dIndex = 4;
+                    } else{
+                        Print.AsDialogue("You approach the fireplace and see something in the fire. You go back because the fire is too warm tho.");    
+                    }
+                   
+                    return 1;
+                } else
+                if (Interact.Look(msg, "window")) {
+                    Print.AsDialogue("You look out of the window and see the mountain and the tall grass.");
+                    return 1;
+                } else
+                    if (Interact.Look(msg, "left") || Interact.Look(msg, "right")) {
+                        Print.AsDialogue("You see theh wooden walls that are rotting away.");
+                        return 1;
+                    } else
+                        if (Interact.Look(msg, "down")) {
+                            Print.AsDialogue("You see the wooden floor with stains all over it.");
+                            return 1;
+                        } else
+                            if (Interact.Look(msg, "up")) {
+                                Print.AsDialogue("You see the wooden ceiling that looks like its about to cave in.");
+                                return 1;
+                            } else
+                                if (Interact.Look(msg, "back")) {
+                                    Print.AsDialogue("You look back and see the shut door.");
+                                    return 1;
+                                } else
+                                    if (Interact.Look(msg, "around")) {
+                                        Print.AsDialogue("You look around and see a hatch, window and fireplace. Maybe I should go have a closer look.");
+                                        return 1;
+                                    } else
+                                        if (Interact.Look(msg, "hatch")) {
+                                            Print.AsDialogue("You see a hatch on the floor with a handle attached to it.");
+                                            return 1;
+                                                    } else
+                                                        if (Interact.Look(msg, "fireplace")) {
+                                                            Print.AsDialogue("You look at the fireplace. It is bright and warm.\nNext to it there is a stick to move the fire around with.");
+                                                            return 1;
+                                                        } else {
+                                                            return 0;
+                                                        }
+                break;
+
+            case 2: //hatch
+
+                break;
+
+            case 3: //window
+
+                break;
+
+            case 4: //fireplace
+
                 break;
 
             default:

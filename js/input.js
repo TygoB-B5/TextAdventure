@@ -17,9 +17,24 @@ class InputHandle {
     CheckForInvalidInput(msg) {
         var m = msg.split(" ");
 
-        //use keyword
+        //multiple words
         if (m[0] === "use" && m[2] === undefined) {
             Print.AsInfo("Usage: " + m[0] + " [inventory Item] on [object]");
+            return true;
+        }
+
+        if (m[0] === "go" && m[1] === "to" && m[2] === undefined) {
+            Print.AsInfo("Usage: go to [object]");
+            return true;
+        }
+
+        if (m[0] === "look" && m[1] === "at" && m[2] === undefined) {
+            Print.AsInfo("Usage: look at [object]");
+            return true;
+        }
+
+        if (m[0] === "pick" && m[1] === "up" && m[2] === undefined) {
+            Print.AsInfo("Usage: pick up [object]");
             return true;
         }
 
@@ -43,6 +58,7 @@ class InputHandle {
             m[0] === "break" ||
             m[0] === "look" ||
             m[0] === "climb" ||
+            m[0] === "goto" ||
             m[0] === "pickup") {
             Print.AsInfo("Usage: " + m + " [object]");
             return true;

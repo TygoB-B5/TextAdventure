@@ -1,31 +1,26 @@
-class Navigation
-{
-    static IsForward(msg)
-    {
+class Navigation {
+    static IsForward(msg) {
         if (msg === "f" || msg === "forward" || msg === "move forward" || msg === "go forward")
             return true;
         else
             return false;
     }
 
-    static IsBack(msg)
-    {
+    static IsBack(msg) {
         if (msg === "b" || msg === "back" || msg === "move back" || msg === "go back")
             return true;
         else
             return false;
     }
 
-    static IsLeft(msg)
-    {
+    static IsLeft(msg) {
         if (msg === "l" || msg === "left" || msg === "move left" || msg === "go left")
             return true;
         else
             return false;
     }
 
-    static IsRight(msg)
-    {
+    static IsRight(msg) {
         if (msg === "r" || msg === "right" || msg === "move right" || msg === "go right")
             return true;
         else
@@ -33,94 +28,106 @@ class Navigation
     }
 }
 
-class Interact
-{
-    static Sit(msg)
-    {
-        if(msg == "sit")
-        {
+class Interact {
+
+    static Sit(msg) {
+        if (msg == "sit") {
             return true;
         }
-        else if(msg == "sit down")
-        {
+        else if (msg == "sit down") {
             return true;
         }
         return false;
     }
-    static Stand(msg)
-    {
-        if(msg == "stand")
-        {
+    static Stand(msg) {
+        if (msg == "stand") {
             return true;
         }
-        else if(msg == "stand up")
-        {
+        else if (msg == "stand up") {
             return true;
         }
         return false;
     }
 
-    static Pickup(msg, obj)
-    {
+    static Pickup(msg, obj) {
         var wordArr = msg.split(" ");
 
-        if(wordArr[0] === "pickup" && wordArr[1] === obj)
+        if (wordArr[0] === "take" && wordArr[1] === obj)
+            return true;
+        
+        if (wordArr[0] === "pickup" && wordArr[1] === obj)
             return true;
 
-        if(wordArr[0] === "pick" && wordArr[1] === "up" && wordArr[2] === obj)
-            return true;
-
-        return false;
-    }
-
-    static Look(msg, obj)
-    {
-        var wordArr = msg.split(" ");
-
-        if(wordArr[0] === "look" && wordArr[1] === obj)
+        if (wordArr[0] === "pick" && wordArr[1] === "up" && wordArr[2] === obj)
             return true;
 
         return false;
     }
 
-    static Break(msg, obj)
-    {
+    static Look(msg, obj) {
         var wordArr = msg.split(" ");
 
-        if(wordArr[0] === "break" && wordArr[1] === obj)
+        if (wordArr[0] === "look" && wordArr[1] === obj)
+            return true;
+
+        if (wordArr[0] === "look" && wordArr[1] === "at" && wordArr[2] === obj)
+            return true;
+
+        if (wordArr[0] === "lookat" && wordArr[1] === obj)
             return true;
 
         return false;
     }
 
-    static Open(msg, obj)
-    {
+    static GoTo(msg, obj) {
         var wordArr = msg.split(" ");
 
-        if(wordArr[0] === "open" && wordArr[1] === obj)
+        if (wordArr[0] === "go" && wordArr[1] === obj)
+            return true;
+
+        if (wordArr[0] === "go" && wordArr[1] === "to" && wordArr[2] === obj)
+            return true;
+
+        if (wordArr[0] === "goto" && wordArr[1] === obj)
             return true;
 
         return false;
     }
 
-    static Move(msg, obj)
-    {
+    static Break(msg, obj) {
         var wordArr = msg.split(" ");
 
-        if(wordArr[0] === "move" && wordArr[1] === obj)
+        if (wordArr[0] === "break" && wordArr[1] === obj)
             return true;
 
         return false;
     }
 
-    static Use(msg, invObject, interactible)
-    {
+    static Open(msg, obj) {
         var wordArr = msg.split(" ");
 
-        if(wordArr[0] !== "use" || wordArr[2] !== "on")
+        if (wordArr[0] === "open" && wordArr[1] === obj)
+            return true;
+
+        return false;
+    }
+
+    static Move(msg, obj) {
+        var wordArr = msg.split(" ");
+
+        if (wordArr[0] === "move" && wordArr[1] === obj)
+            return true;
+
+        return false;
+    }
+
+    static Use(msg, invObject, interactible) {
+        var wordArr = msg.split(" ");
+
+        if (wordArr[0] !== "use" || wordArr[2] !== "on")
             return false;
 
-        if(wordArr[1] !== invObject || wordArr[3] !== interactible)
+        if (wordArr[1] !== invObject || wordArr[3] !== interactible)
             return false;
 
         return true;
