@@ -29,12 +29,15 @@ class Intro {
     }
 
     Continue(msg) {
-        player.bg.SetBackground(0);
 
         if (msg === "skip") {
-            this.FinishState();
+            this.dIndex = 23;
+            player.input.PushInput("");
             player.input.PushInput("");
             return 1;
+        } else
+        {
+            player.bg.SetBackground(0);
         }
 
         switch (this.dIndex) {
@@ -226,6 +229,10 @@ class Intro {
 
             case 22:
                 Print.AsParagraph("That was all of the tutorial, now let's begin your adventure!");
+                player.input.state.SetActiveState(1, 0);
+                break;
+
+            case 23:
                 player.input.state.SetActiveState(1, 0);
                 break;
 
@@ -491,21 +498,20 @@ class Cabin {
 
             case 1:
                 if (Interact.GoTo(msg, "hatch")) {
-                    Print.AsDialogue("You look around and see a hatch, window and fireplace.");
+                    Print.AsDialogue("You walk to the hatch and find that there is a handle attached to it despite it being hard to see due to the amound of dust that it is covered in.");
+                    this.dIndex = 2;
                 } else
                 if (Interact.GoTo(msg, "window")) {
-                    Print.AsDialogue("You look around and see a hatch, window and fireplace.");
-                    this.dIndex = 3;
+                    Print.AsDialogue("You go to the window and try to open it but it is shut.");
                     return 1;
                 } else
                 if (Interact.GoTo(msg, "fireplace")) {
                     if(this.hasSuit) {
                         Print.AsDialogue("You approach the fire and don't feel the warmth at all.")
-                        this.dIndex = 4;
+                        this.dIndex = 3;
                     } else{
-                        Print.AsDialogue("You approach the fireplace and see something in the fire. You go back because the fire is too warm tho.");    
+                        Print.AsDialogue("You approach the fireplace and see something in the fire. You go back because the fire is too warm.");    
                     }
-                   
                     return 1;
                 } else
                 if (Interact.Look(msg, "window")) {
@@ -533,26 +539,25 @@ class Cabin {
                                         return 1;
                                     } else
                                         if (Interact.Look(msg, "hatch")) {
-                                            Print.AsDialogue("You see a hatch on the floor with a handle attached to it.");
+                                            Print.AsDialogue("You see a dirty hatch on the floor.");
                                             return 1;
                                                     } else
                                                         if (Interact.Look(msg, "fireplace")) {
-                                                            Print.AsDialogue("You look at the fireplace. It is bright and warm.\nNext to it there is a stick to move the fire around with.");
+                                                            Print.AsDialogue("You look at the fireplace, it is bright and warm. Maybe I should have a closer look.");
                                                             return 1;
                                                         } else {
                                                             return 0;
                                                         }
                 break;
 
-            case 2: //hatch
-
+            case 2: //approach hatch
+            if(Interact.Open(msg, "hatch"))
+            {
+                Print.AsDialogue("You open the hatch and see a ladder going down in to a cave.")
+            }
                 break;
 
-            case 3: //window
-
-                break;
-
-            case 4: //fireplace
+            case 3: //fireplace after having suit
 
                 break;
 

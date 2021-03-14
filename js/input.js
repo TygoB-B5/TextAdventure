@@ -1,6 +1,7 @@
 class InputHandle {
     constructor() {
         this.state = new State();
+        this.primeQuitMsg = false;
     }
 
     CheckForGlobalInput(msg) {
@@ -11,6 +12,19 @@ class InputHandle {
             return true;
         }
 
+        if (this.primeQuitMsg && m[0] === "yes") {
+            window.location.href = "https://tygoboons.nl";
+            return true;
+        } else if(this.primeQuitMsg){
+            this.primeQuitMsg = false;
+            return true;
+        }
+
+        if (m[0] === "die" || m[0] === "quit" || m[0] === "stop" || m[0] === "kill") {
+            this.primeQuitMsg = true;
+            Print.AsInfo("Are you sure you want to quit?");
+            return true;
+        }
         return false;
     }
 

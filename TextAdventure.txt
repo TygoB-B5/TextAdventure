@@ -232,5 +232,18 @@ h1> Mountain
 
 h1> Cabin
 {
-//wip
+    I>look //look commands
+
+
+    i>Go to fireplace
+    {
+        D>
+        You approach the fireplace and see something in the fire. You go back because the fire is too warm.
+
+        <has suit> //obtanied from hatch state
+
+        D>
+        You approach the fire and don't feel the warmth at all.
+    }
+
 }
