@@ -246,4 +246,16 @@ h1> Cabin
         You approach the fire and don't feel the warmth at all.
     }
 
+    i> go to hatch
+    {
+        D>
+        You walk to the hatch and find that there is a handle attached to it despite it being hard to see due to the amound of dust that it is covered in.
+
+        i>Open hatch
+        {
+            D>
+            You open the hatch and see a ladder going down in to a cave.
+        }
+    }
+
 }

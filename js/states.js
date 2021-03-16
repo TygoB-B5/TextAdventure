@@ -500,6 +500,7 @@ class Cabin {
                 if (Interact.GoTo(msg, "hatch")) {
                     Print.AsDialogue("You walk to the hatch and find that there is a handle attached to it despite it being hard to see due to the amound of dust that it is covered in.");
                     this.dIndex = 2;
+                    return 1;
                 } else
                 if (Interact.GoTo(msg, "window")) {
                     Print.AsDialogue("You go to the window and try to open it but it is shut.");
@@ -551,14 +552,55 @@ class Cabin {
                 break;
 
             case 2: //approach hatch
-            if(Interact.Open(msg, "hatch"))
-            {
-                Print.AsDialogue("You open the hatch and see a ladder going down in to a cave.")
-            }
+                if (Interact.Move(msg, "hatch")) {
+                    Print.AsDialogue("The hatch is held down by hinges and not movable.");
+                    return 1;
+                } else
+                    if (Interact.Break(msg, "hatch")) {
+                        Print.AsDialogue("You punch the hatch and it shoots up a litle. Its unlocked!");
+                        return 1;
+                    } else
+                        if (Interact.Open(msg, "hatch")) {
+                            Print.AsDialogue("You open the hatch and see a ladder going down in to a cave.");
+                            player.input.state.SetActiveState(4, 0);
+                            player.bg.SetBackground(4);
+                        } else
+                            if (Interact.GoTo(msg, "back") || Navigation.IsBack(msg)) {
+                                Print.AsDialogue("You go back and stand in the middle of the room again.");
+                                this.dIndex = 1;
+                                return 1;
+                            } else {
+                                return 0;
+                            }
                 break;
 
             case 3: //fireplace after having suit
 
+                break;
+
+            default:
+                alert("Error, dIndex out of range, " + this.dIndex);
+                break;
+        }
+        this.dIndex++;
+        return 1;
+    }
+}
+
+class Cave {
+    constructor(dIndex) {
+        this.dIndex = dIndex;
+    }
+
+    Continue(msg) {
+        player.bg.SetBackground(4);
+
+        switch (this.dIndex) {
+            case 0:
+                Print.AsTitle("WIP");
+                break;
+
+            case 1:
                 break;
 
             default:

@@ -1,6 +1,6 @@
 class Background {
     constructor() {
-        this.bg = ["whitebackground.png", "layingingrass.png", "mountain.png", "cabin.png"];
+        this.bg = ["whitebackground.png", "layingingrass.png", "mountain.png", "cabin.png", "cave.png"];
         this.isGoingUp = false;
         this.timer;
         this.i = 0;
@@ -26,7 +26,6 @@ class Background {
         } else {
             clearInterval(this.timer);
         }
-        console.log(this.i);
         $('body').css('opacity', this.i);
 
         if (this.i <= 0) {

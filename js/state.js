@@ -2,7 +2,8 @@ function GetState(stateIndex, loadPointIndex) {
     var states = [new Intro(loadPointIndex),
     new LayDown(loadPointIndex),
     new Mountain(loadPointIndex),
-    new Cabin(loadPointIndex)];
+    new Cabin(loadPointIndex),
+    new Cave(loadPointIndex)];
     return states[stateIndex];
 }
 
