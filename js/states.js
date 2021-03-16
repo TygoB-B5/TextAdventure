@@ -35,8 +35,7 @@ class Intro {
             player.input.PushInput("");
             player.input.PushInput("");
             return 1;
-        } else
-        {
+        } else {
             player.bg.SetBackground(0);
         }
 
@@ -57,10 +56,12 @@ class Intro {
             case 3:
                 Print.AsTitle("Commands (moving)");
                 Print.AsParagraph("There are many commands that exist in this adventure, take for example the navigation commands as shown here.");
-                Print.AsInfo("move forward, forward, f.");
-                Print.AsInfo("move back, back, b.");
-                Print.AsInfo("move left, left, l.");
-                Print.AsInfo("move right, right, r.");
+                Print.AsInfo("go forward, move forward, forward, f.");
+                Print.AsInfo("go back, move back, back, b.");
+                Print.AsInfo("go left, move left, left, l.");
+                Print.AsInfo("go right, move right, right, r.");
+                Print.AsInfo("go up, move up, up, u.");
+                Print.AsInfo("go down, move down, down, d.");
                 break;
 
             case 4:

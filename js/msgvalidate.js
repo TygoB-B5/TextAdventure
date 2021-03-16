@@ -26,6 +26,23 @@ class Navigation {
         else
             return false;
     }
+
+
+    static IsDown(msg)
+    {
+        if (msg === "d" || msg === "down" || msg === "move down" || msg === "go down")
+        return true;
+    else
+        return false;
+    }
+
+    static IsUp(msg)
+    {
+        if (msg === "u" || msg === "up" || msg === "move up" || msg === "go up")
+        return true;
+    else
+        return false;
+    }
 }
 
 class Interact {
