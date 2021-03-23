@@ -1,6 +1,6 @@
 class Background {
     constructor() {
-        this.bg = ["whitebackground.png", "layingingrass.png", "mountain.png", "cabin.png", "cave.png"];
+        this.bg = ["whitebackground.png", "layingingrass.png", "mountain.png", "cabin.png", "ladder.png", "cave.png"];
         this.isGoingUp = false;
         this.timer;
         this.i = 0;

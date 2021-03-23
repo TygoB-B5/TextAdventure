@@ -115,7 +115,7 @@ html
 /* TEXT OUTPUT STYLING */
 #title
 {
-    text-decoration: underline;
+    /*text-decoration: underline;*/ 
     margin-bottom: 40px;
     font-size: 40px;
     color: black;

@@ -552,7 +552,7 @@ class Cabin {
                                                         }
                 break;
 
-            case 2: //approach hatch
+            case 2: // Approach hatch
                 if (Interact.Move(msg, "hatch")) {
                     Print.AsDialogue("The hatch is held down by hinges and not movable.");
                     return 1;
@@ -570,13 +570,26 @@ class Cabin {
                                 Print.AsDialogue("You go back and stand in the middle of the room again.");
                                 this.dIndex = 1;
                                 return 1;
-                            } else {
-                                return 0;
+                            }
+                            else
+                                if (Interact.GoTo(msg, "middle") || Navigation.IsBack(msg)) {
+                                    Print.AsDialogue("You go back and stand in the middle of the room again.");
+                                    this.dIndex = 1;
+                                    return 1;
+                                } else {
+                                    return 0;
                             }
                 break;
 
-            case 3: //fireplace after having suit
+            case 3: // Fireplace after having suit
 
+                break;
+
+            case 4: // Cave return point
+                this.hasSuit = true;
+                this.dIndex = 1;
+                player.input.PushInput("");
+                return 1;
                 break;
 
             default:
@@ -594,14 +607,84 @@ class Cave {
     }
 
     Continue(msg) {
-        player.bg.SetBackground(4);
 
         switch (this.dIndex) {
             case 0:
-                Print.AsTitle("WIP");
+                player.bg.SetBackground(4);
+                Print.AsTitle("Cave");
+                Print.AsDialogue("You go down the ladder and find yourself in a cold and old cave.");
                 break;
 
             case 1:
+                player.bg.SetBackground(5);
+
+                if(Navigation.IsLeft(msg))
+                {
+                    Print.AsDialogue("You go left but you cant go further bcs it is boarded off with wood.");
+                    this.dIndex = 2;
+                    return 1;
+                } else
+                    if (Navigation.IsLeft(msg)) {
+                        Print.AsDialogue("You go left but you cant go further bcs it is boarded off with wood.");
+                        this.dIndex = 12;
+                        return 1;
+                    }
+
+                else if (Interact.Look(msg, "window")) {
+                    Print.AsDialogue("You look out of the window and see the mountain and the tall grass.");
+                    return 1;
+                } else
+                    if (Interact.Look(msg, "left") || Interact.Look(msg, "right")) {
+                        Print.AsDialogue("You see a rail goin across in a mineshaft.");
+                        return 1;
+                    } else
+                        if (Interact.Look(msg, "down")) {
+                            Print.AsDialogue("You see the rock solid floor covered in dust.");
+                            return 1;
+                        } else
+                            if (Interact.Look(msg, "up")) {
+                                Print.AsDialogue("You can see light coming from the open hatch.");
+                                return 1;
+                            } else
+                                if (Interact.Look(msg, "back")) {
+                                    Print.AsDialogue("You see the cave wall.");
+                                    return 1;
+                                } else
+                                    if (Interact.Look(msg, "around")) {
+                                        Print.AsDialogue("You look around and see a rail going across to the left and right.");
+                                        return 1;
+                                    } else {
+                                        return 0;
+                                    }
+            break;
+
+            case 2: // Going left
+            if(Interact.Break(msg, "wood") || Interact.Break(mgs, "wood boards"))
+            {
+                Print.AsDialogue("You attempt to break the wood boards but you are not strong enough");
+                return 1;
+            }
+                if (Navigation.IsRight(msg)) {
+                    Print.AsDialogue("You go back to the ladder");
+                    this.dIndex = 1;
+                    return 1;
+                } else
+                    if (Navigation.IsLeft(msg)) {
+                        Print.AsDialogue("You cant go any further bcs of the wood boards");
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                break;
+
+            case 12: // Going right
+                    Print.AsInfo("WIP");
+                    return 1;
+            break;
+
+            case 99: // Return to cabin
+                Print.AsDialogue("You go back up the hatch to the middle of the cabin.");
+                player.input.state.SetActiveState(3, 4);
                 break;
 
             default:
