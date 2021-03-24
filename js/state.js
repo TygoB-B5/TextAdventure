@@ -9,7 +9,7 @@ function GetState(stateIndex, loadPointIndex) {
 
 class State {
     constructor() {
-        this.currentState = GetState(3 , 0);
+        this.currentState = GetState(0 , 0);
     }
 
     SetActiveState(index, loadindex) {

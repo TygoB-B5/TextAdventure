@@ -678,8 +678,14 @@ class Cave {
                 break;
 
             case 12: // Going right
-                    Print.AsInfo("WIP");
+                Print.AsInfo("WIP");
+                if (Navigation.IsLeft(msg)) {
+                    Print.AsDialogue("You go back to the ladder");
+                    this.dIndex = 1;
                     return 1;
+                } else {
+                    return 0;
+                }
             break;
 
             case 99: // Return to cabin
