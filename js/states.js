@@ -60,18 +60,18 @@ class Intro {
                 Print.AsInfo("go back, move back, back, b.");
                 Print.AsInfo("go left, move left, left, l.");
                 Print.AsInfo("go right, move right, right, r.");
-                Print.AsInfo("go up, move up, up, u.");
+                Print.AsInfo("go up, move up, up, you.");
                 Print.AsInfo("go down, move down, down, d.");
                 break;
 
             case 4:
                 Print.AsParagraph("These commands can be used to move around in the game, let's try one of the commands.");
-                Print.AsDialogue(" U are at a traffic light and you need to go left");
+                Print.AsDialogue(" You are at a traffic light and you need to go left");
                 break;
 
             case 5:
                 if (Navigation.IsLeft(msg)) {
-                    Print.AsDialogue("U go left and you arrive at your home.");
+                    Print.AsDialogue("You go left and you arrive at your home.");
                 }
                 else {
                     return 0;
@@ -84,7 +84,7 @@ class Intro {
 
             case 7:
                 Print.AsTitle("Commands (interaction)");
-                Print.AsParagraph("U can interact with your enviroment in many diffrent ways.");
+                Print.AsParagraph("You can interact with your enviroment in many diffrent ways.");
                 break;
 
             case 8:
@@ -101,15 +101,15 @@ class Intro {
 
             case 11:
                 Print.AsParagraph("Here, try to find the right things to do in this situation.");
-                Print.AsDialogue("U found yourself stuck in a room with a door. You want to go outside but the door is blocked by a box.");
+                Print.AsDialogue("You found yourself stuck in a room with a door. You want to go outside but the door is blocked by a box.");
                 break;
 
             case 12:
                 if (Interact.Move(msg, "box")) {
-                    Print.AsDialogue("You moved the box away from the door. U can now open the door");
+                    Print.AsDialogue("You moved the box away from the door. You can now open the door");
                 }
                 else if (Interact.Move(msg, "door")) {
-                    Print.AsDialogue("U cant move the door, its out of your reach.");
+                    Print.AsDialogue("You cant move the door, its out of your reach.");
                     return 1;
                 }
                 else if (Interact.Break(msg, "box")) {
@@ -165,7 +165,7 @@ class Intro {
 
             case 15:
                 Print.AsTitle("Commands(Inventory)");
-                Print.AsParagraph("U also have an Inventory that is useful for storing items u pick up along the way.");
+                Print.AsParagraph("You also have an Inventory that is useful for storing items you pick up along the way.");
                 break;
 
             case 16:
@@ -180,7 +180,7 @@ class Intro {
 
             case 18:
                 Print.AsParagraph("Let's practice these commands, try to open the door (use one of the inventory commands to open inventory)");
-                Print.AsDialogue("U found yourself locked inside a cage, try to find your way out through the door.");
+                Print.AsDialogue("You found yourself locked inside a cage, try to find your way out through the door.");
 
                 player.inv.AddItem(new Item("key", 1));
                 break;
@@ -315,7 +315,7 @@ class Mountain {
 
         switch (this.dIndex) {
             case 0:
-                Print.AsDialogue("You found yourself standing on a tall mountain, u should try to explore a bit.");
+                Print.AsDialogue("You found yourself standing on a tall mountain, you should try to explore a bit.");
                 this.dIndex++;
                 break;
 
@@ -377,10 +377,10 @@ class Mountain {
                 if (this.coord.y == 3) {
                     switch (this.coord.x) {
                         case 1:
-                            Print.AsDialogue("U find a dead tree, it looks like there are some ants walking on it.");
+                            Print.AsDialogue("You find a dead tree, it looks like there are some ants walking on it.");
                             break;
                         case 2:
-                            Print.AsDialogue("U stand on the edge of the cliff, thats a deep fall...");
+                            Print.AsDialogue("You stand on the edge of the cliff, thats a deep fall...");
                             break;
                         case 3:
                             Print.AsDialogue("There seems to only be some tall grass here.");
@@ -393,7 +393,7 @@ class Mountain {
                             switch (this.doorPhase) {
                                 case 0:
                                     Print.AsParagraph("A small cabin?");
-                                    Print.AsDialogue("U find a small cabin, what could be inside?");
+                                    Print.AsDialogue("You find a small cabin, what could be inside?");
                                     this.doorPhase++;
                                     break;
 
@@ -414,7 +414,7 @@ class Mountain {
                                         }
                                         else {
                                             Print.AsDialogue("You go through the door and enter the warm cabin.");
-                                            Print.AsDialogue("The door shuts behind you and u try to open it but you can't.");
+                                            Print.AsDialogue("The door shuts behind you and you try to open it but you can't.");
                                             player.input.state.SetActiveState(3, 0);
                                         }
                                     }
@@ -428,10 +428,10 @@ class Mountain {
                             }
                             break;
                         case 2:
-                            Print.AsDialogue("U are back at the tall grass, your body print is still in it.");
+                            Print.AsDialogue("You are back at the tall grass, your body print is still in it.");
                             break;
                         case 3:
-                            Print.AsDialogue("U see a wild waterfall, cool!");
+                            Print.AsDialogue("You see a wild waterfall, cool!");
                             break;
                     }
                 }
@@ -441,7 +441,7 @@ class Mountain {
                             Print.AsDialogue("The wind is unbearable here, I better head back quickly.");
                             break;
                         case 2:
-                            Print.AsDialogue(" U spot some rocks. Small ones, big ones, in a bunch of diffrent shapes and sizes.");
+                            Print.AsDialogue(" You spot some rocks. Small ones, big ones, in a bunch of diffrent shapes and sizes.");
                             break;
                         case 3:
                             if (Interact.Open(msg, "box")) {
@@ -464,7 +464,7 @@ class Mountain {
                                 }
                                 else {
                                     Print.AsParagraph("A box!");
-                                    Print.AsDialogue("U stumble upon some shorter grass and a small box lies in front of you.");
+                                    Print.AsDialogue("You stumble upon some shorter grass and a small box lies in front of you.");
                                 }
                                 this.isOnBox = true;
                             }
