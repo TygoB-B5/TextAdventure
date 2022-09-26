@@ -60,7 +60,7 @@ class Intro {
                 Print.AsInfo("go back, move back, back, b.");
                 Print.AsInfo("go left, move left, left, l.");
                 Print.AsInfo("go right, move right, right, r.");
-                Print.AsInfo("go up, move up, up, you.");
+                Print.AsInfo("go up, move up, up, u.");
                 Print.AsInfo("go down, move down, down, d.");
                 break;
 
